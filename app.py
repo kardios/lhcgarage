@@ -19,6 +19,6 @@ if st.button('Let\'s Go!'):
         max_tokens_to_sample=1000,
         prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
     )
-output = completion.completion
+    output = completion.completion
 
 st.write(output)
