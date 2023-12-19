@@ -10,14 +10,15 @@ anthropic = Anthropic(
 )
 
 st.write("LHC's Garage")
-st.text_input("Enter your prompt:", "How does a man become a god?")
+input = st.text_input("Enter your prompt:", "How does a man become a god?")
 
-completion = anthropic.completions.create(
-    model="claude-2.1",
-    temperature = 0,
-    max_tokens_to_sample=1000,
-    prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
-)
+if st.button('Let\'s Go!'):
+    completion = anthropic.completions.create(
+        model="claude-2.1",
+        temperature = 0,
+        max_tokens_to_sample=1000,
+        prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
+    )
 output = completion.completion
 
 st.write(output)
