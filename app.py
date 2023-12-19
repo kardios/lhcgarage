@@ -20,5 +20,4 @@ if st.button('Let\'s Go!'):
         prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
     )
     output = completion.completion
-
-st.write(output)
+    st.write(output)
