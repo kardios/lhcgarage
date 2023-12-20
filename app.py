@@ -24,6 +24,7 @@ if uploaded_file is not None:
             raw_text = raw_text + text + "\n"
 
 if st.button('Let\'s Go!'):
+    start = time.time()
     input = instruction + "\n\n" + raw_text
     completion = anthropic.completions.create(
         model="claude-2.1",
@@ -32,4 +33,6 @@ if st.button('Let\'s Go!'):
         prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
     )
     output = completion.completion
+    end = time.time()
     st.write(output)
+    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
