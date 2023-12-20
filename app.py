@@ -11,9 +11,20 @@ anthropic = Anthropic(
 )
 
 st.write("LHC's Garage")
-input = st.text_input("Enter your prompt:", "How does a man become a god?")
+instruction = st.text_input("Enter your prompt:", "How does a man become a god?")
+
+uploaded_file = st.file_uploader("**Upload** the PDF document you would like me to analyse", type = "pdf")
+raw_text = ""
+output_text = ""
+if uploaded_file is not None:
+    doc_reader = PdfReader(uploaded_file)
+    for i, page in enumerate(doc_reader.pages):
+        text = page.extract_text()
+        if text:
+            raw_text = raw_text + text + "\n"
 
 if st.button('Let\'s Go!'):
+    input = instruction + "\n\n" + raw_text
     completion = anthropic.completions.create(
         model="claude-2.1",
         temperature = 0,
