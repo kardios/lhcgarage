@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+from PyPDF2 import PdfReader
 
 # Retrieve the OpenAI API key from the environment variables
 API_KEY = os.environ["ANTHROPIC_API_KEY"]
