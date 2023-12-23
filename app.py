@@ -15,7 +15,7 @@ st.write("LHC's Garage")
 #instruction = st.text_input("Enter your prompt:", "How does a man become a god?")
 
 Menu_Option = st.selectbox("Select analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
-if Menu_Option == "Condense the text into bullet points":
+if Menu_Option == "Shorten the text into a summary":
   instruction = "You are my helpful reading assistant. You will read the text I provide and generate a concise and coherent summary. Include the main ideas and key details from the text. Present your output in bullet points."
 elif Menu_Option == "Identify possible biases in the text":
   instruction = "You are my helpful reading assistant. You will read the text I provide and highlight any possible biases. Present your output in bullet points."
