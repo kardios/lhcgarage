@@ -16,17 +16,17 @@ st.write("LHC's Garage")
 
 Menu_Option = st.selectbox("Select analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Shorten the text into a summary":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and generate a concise and coherent summary. Include the main ideas and key details from the text. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and generate a concise and coherent summary that includes the main ideas and key details."
 elif Menu_Option == "Identify possible biases in the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and highlight any possible biases. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and highlight any possible biases."
 elif Menu_Option == "Seek views disagreeing with the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that disagree with the text. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and offer perspectives that disagree with the text."
 elif Menu_Option == "Find angles missing from the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that are missing from the text. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and offer perspectives that are missing from the text."
 elif Menu_Option == "Discuss broader significance of the topics":
-  instruction = "You are my helpful reading assistant. You will read the text I provide. Draft a conclusion that highlights the broader significance of the topics. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and draft a conclusion that highlights the broader significance of the topics."
 elif Menu_Option == "Compare the text with historical events":
-  instruction = "You are my helpful reading assistant. You will read the text I provide. Reflect on the text and draw similiarities and differences to historical events in the last century. Present your output in bullet points."
+  instruction = "You are my helpful reading assistant. Please read the text below and reflect on the text and draw similiarities and differences to historical events in the last century."
 elif Menu_Option == "Customise your own unique prompt":
   instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
