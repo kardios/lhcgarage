@@ -12,11 +12,10 @@ anthropic = Anthropic(
 )
 
 st.write("LHC's Garage")
-#instruction = st.text_input("Enter your prompt:", "How does a man become a god?")
 
-Menu_Option = st.selectbox("Select analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
+Menu_Option = st.selectbox("**Select** analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Shorten the text into a summary":
-  instruction = "Generate a concise and coherent summary that includes the main ideas and key details."
+  instruction = "Generate a concise and coherent summary. Include the main ideas and key details. Present your output in bullet points."
 elif Menu_Option == "Identify possible biases in the text":
   instruction = "Identify possible biases in the text."
 elif Menu_Option == "Seek views disagreeing with the text":
@@ -30,7 +29,7 @@ elif Menu_Option == "Compare the text with historical events":
 elif Menu_Option == "Customise your own unique prompt":
   instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-uploaded_file = st.file_uploader("**Upload** the PDF document you would like me to analyse", type = "pdf")
+uploaded_file = st.file_uploader("**Upload** the PDF document to analyse", type = "pdf")
 raw_text = ""
 output_text = ""
 if uploaded_file is not None:
