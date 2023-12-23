@@ -14,21 +14,19 @@ anthropic = Anthropic(
 st.write("LHC's Garage")
 #instruction = st.text_input("Enter your prompt:", "How does a man become a god?")
 
-Menu_Option = st.selectbox("Select analysis:", ('Condense the text into bullet points', 'Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
+Menu_Option = st.selectbox("Select analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Condense the text into bullet points":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and summarize into bullet points. Identify the main ideas and key details in the text, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
-elif Menu_Option == "Shorten the text into a summary":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and generate an informative and coherent summary. Include the main ideas and key details from the text. Think step by step."
+  instruction = "You are my helpful reading assistant. You will read the text I provide and generate a concise and coherent summary. Include the main ideas and key details from the text. Present your output in bullet points."
 elif Menu_Option == "Identify possible biases in the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and highlight any possible biases."
+  instruction = "You are my helpful reading assistant. You will read the text I provide and highlight any possible biases. Present your output in bullet points."
 elif Menu_Option == "Seek views disagreeing with the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that disagree with the text."
+  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that disagree with the text. Present your output in bullet points."
 elif Menu_Option == "Find angles missing from the text":
-  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that are missing from the text."
+  instruction = "You are my helpful reading assistant. You will read the text I provide and offer perspectives that are missing from the text. Present your output in bullet points."
 elif Menu_Option == "Discuss broader significance of the topics":
-  instruction = "You are my helpful reading assistant. You will read the text I provide. Draft a conclusion that highlights the broader significance of the topics."
+  instruction = "You are my helpful reading assistant. You will read the text I provide. Draft a conclusion that highlights the broader significance of the topics. Present your output in bullet points."
 elif Menu_Option == "Compare the text with historical events":
-  instruction = "You are my helpful reading assistant. You will read the text I provide. Reflect on the text and draw similiarities and differences to historical events in the last century."
+  instruction = "You are my helpful reading assistant. You will read the text I provide. Reflect on the text and draw similiarities and differences to historical events in the last century. Present your output in bullet points."
 elif Menu_Option == "Customise your own unique prompt":
   instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
