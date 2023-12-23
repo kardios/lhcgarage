@@ -15,7 +15,7 @@ st.write("LHC's Garage")
 
 Menu_Option = st.selectbox("**Select** analysis:", ('Shorten the text into a summary', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Shorten the text into a summary":
-  instruction = "Generate a concise and coherent summary. Include the main ideas and key details. Present your output in bullet points."
+  instruction = "Summarise the key points of the text."
 elif Menu_Option == "Identify possible biases in the text":
   instruction = "Identify possible biases in the text."
 elif Menu_Option == "Seek views disagreeing with the text":
