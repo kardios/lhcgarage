@@ -29,7 +29,7 @@ elif Menu_Option == "Compare the text with historical events":
 elif Menu_Option == "Customise your own unique prompt":
   instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-uploaded_file = st.file_uploader("**Upload** the PDF document to analyse", type = "pdf")
+uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
 output_text = ""
 if uploaded_file is not None:
