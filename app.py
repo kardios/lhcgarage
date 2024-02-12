@@ -15,6 +15,8 @@ gemini = genai.GenerativeModel('gemini-pro')
 
 st.write("LHC's Garage :sunglasses: Testing Anthropic and Gemini Large Language Models")
 
+Model_Option = st.selectbox("**Select** model:", ('claude-2.1','gemini-pro'))
+
 Menu_Option = st.selectbox("**Select** analysis:", ('Summarise the key points of the text', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Summarise the key points of the text":
   instruction = "Summarise the key points of the text."
