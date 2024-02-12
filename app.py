@@ -12,9 +12,9 @@ GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 
-st.write("LHC's Garage :sunglasses: Testing Anthropic and Google LLMs")
+st.write("LHC's Garage :sunglasses: Testing Anthropic, Google and OpenAI's LLMs")
 
-Model_Option = st.selectbox("**Select** model:", ('claude-2.1','gemini-pro'))
+Model_Option = st.selectbox("**Select** model:", ('claude-2.1','gemini-pro','gpt-3.5-turbo-0125','gpt-4-turbo-preview'))
 
 Menu_Option = st.selectbox("**Select** analysis:", ('Summarise the key points of the text', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Summarise the key points of the text":
