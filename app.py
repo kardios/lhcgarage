@@ -5,14 +5,15 @@ from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
 from PyPDF2 import PdfReader
 
-# Retrieve the OpenAI API key from the environment variables
-API_KEY = os.environ["ANTHROPIC_API_KEY"]
+# Retrieve the API keys from the environment variables
+CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
+GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
 
-anthropic = Anthropic(
-    api_key = API_KEY,
-)
+anthropic = Anthropic(api_key=CLAUDE_API_KEY)
+genai.configure(api_key=GEMINI_API_KEY)
+gemini = genai.GenerativeModel('gemini-pro')
 
-st.write("LHC's Garage :sunglasses: Anthropic's Claude 2.1 Large Language Model")
+st.write("LHC's Garage :sunglasses: Testing Anthropic and Gemini Large Language Models")
 
 Menu_Option = st.selectbox("**Select** analysis:", ('Summarise the key points of the text', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
 if Menu_Option == "Summarise the key points of the text":
