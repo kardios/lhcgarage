@@ -4,7 +4,7 @@ import time
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
 from openai import OpenAI
-from pypdf import PdfReader
+from pypdf2 import PdfReader
 
 # Retrieve the API keys from the environment variables
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
