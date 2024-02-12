@@ -8,9 +8,11 @@ from PyPDF2 import PdfReader
 # Retrieve the API keys from the environment variables
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
+CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
+client = OpenAI(api_key=CLIENT_API_KEY)
 
 st.write("LHC's Garage :sunglasses: Testing Anthropic, Google and OpenAI's LLMs")
 
@@ -59,6 +61,16 @@ if uploaded_file is not None:
     response = gemini.generate_content(input)
     output_text = response.text
     st.write(response.prompt_feedback)  
+
+  elif Model_Option == "gpt-3.5-turbo-0125" or Model_Option == "gpt-4-turbo-preview":
+    response = client.chat.completions.create(
+      model=Model_Option, messages=[
+        {"role": "system", "content": ""},
+        {"role": "user", "content": input},
+      ],
+      temperature=0,
+    )
+    output_text = response.choices[0].message.content
     
   end = time.time()
   
