@@ -11,7 +11,6 @@ GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
 
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
-gemini = genai.GenerativeModel('gemini-pro')
 
 st.write("LHC's Garage :sunglasses: Testing Anthropic and Google LLMs")
 
@@ -37,22 +36,32 @@ uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type
 raw_text = ""
 output_text = ""
 if uploaded_file is not None:
-    doc_reader = PdfReader(uploaded_file)
-    for i, page in enumerate(doc_reader.pages):
-        text = page.extract_text()
-        if text:
-            raw_text = raw_text + text + "\n"
+  doc_reader = PdfReader(uploaded_file)
+  for i, page in enumerate(doc_reader.pages):
+    text = page.extract_text()
+    if text:
+      raw_text = raw_text + text + "\n"
 
-if st.button('Let\'s Go!'):
-    start = time.time()
-    input = "Read the text below." + instruction + "\n\n" + raw_text
+  start = time.time()
+  input = "Read the text below." + instruction + "\n\n" + raw_text
+  
+  if Model_Option = "claude-2.1":  
     completion = anthropic.completions.create(
-        model="claude-2.1",
-        temperature = 0,
-        max_tokens_to_sample=1000,
-        prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
+      model=Model_Option,
+      temperature = 0,
+      max_tokens_to_sample=1000,
+      prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
     )
-    output = completion.completion
-    end = time.time()
-    st.write(output)
-    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    output_text = completion.completion
+  
+  elif Model_Option = "gemini-pro":
+    gemini = genai.GenerativeModel(Model_Option)
+    response = model.generate_content(input)
+    output_text = response.text
+    st.write(response.prompt_feedback)  
+    
+  end = time.time()
+  
+  st.write(output_text)
+  st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+  st.download_button(':scroll:', output_text)
