@@ -3,6 +3,7 @@ import os
 import time
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
+from openai import OpenAI
 from PyPDF2 import PdfReader
 
 # Retrieve the API keys from the environment variables
