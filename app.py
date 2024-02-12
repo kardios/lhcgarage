@@ -45,7 +45,7 @@ if uploaded_file is not None:
   start = time.time()
   input = "Read the text below." + instruction + "\n\n" + raw_text
   
-  if Model_Option = "claude-2.1":  
+  if Model_Option == "claude-2.1":  
     completion = anthropic.completions.create(
       model=Model_Option,
       temperature = 0,
@@ -54,7 +54,7 @@ if uploaded_file is not None:
     )
     output_text = completion.completion
   
-  elif Model_Option = "gemini-pro":
+  elif Model_Option == "gemini-pro":
     gemini = genai.GenerativeModel(Model_Option)
     response = model.generate_content(input)
     output_text = response.text
