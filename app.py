@@ -13,7 +13,7 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 gemini = genai.GenerativeModel('gemini-pro')
 
-st.write("LHC's Garage :sunglasses: Testing Anthropic and Gemini Large Language Models")
+st.write("LHC's Garage :sunglasses: Testing Anthropic and Google LLMs")
 
 Model_Option = st.selectbox("**Select** model:", ('claude-2.1','gemini-pro'))
 
