@@ -56,7 +56,7 @@ if uploaded_file is not None:
   
   elif Model_Option == "gemini-pro":
     gemini = genai.GenerativeModel(Model_Option)
-    response = model.generate_content(input)
+    response = gemini.generate_content(input)
     output_text = response.text
     st.write(response.prompt_feedback)  
     
