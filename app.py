@@ -66,7 +66,7 @@ if uploaded_file is not None:
         }
       ]
     )
-    output_text = message.content[0]["text"]
+    output_text = message.content[0].text
   
   elif Model_Option == "claude-2.1":  
     completion = anthropic.completions.create(
