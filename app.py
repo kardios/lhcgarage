@@ -15,7 +15,7 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.write("LHC's Garage :sunglasses: Testing Anthropic, Google and OpenAI's LLMs")
+st.write("LHC's Garage :sunglasses: Testing Anthropic, Google and OpenAI's LLMs :sunglasses:")
 
 Model_Option = st.selectbox("**Select** model:", ('claude-3-sonnet-20240229','claude-3-opus-20240229','claude-2.1','gemini-pro','gpt-3.5-turbo-0125','gpt-4-turbo-preview'))
 
