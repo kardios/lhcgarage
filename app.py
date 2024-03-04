@@ -45,55 +45,58 @@ if uploaded_file is not None:
     if text:
       raw_text = raw_text + text + "\n"
 
-  start = time.time()
-  input = "Read the text below." + instruction + "\n\n" + raw_text
-
-  if Model_Option == "claude-3-sonnet-20240229" or "claude-3-opus-20240229":  
-    message = anthropic.messages.create(
-      model = Model_Option,
-      max_tokens = 1000,
-      temperature=0,
-      system= "Be precise and concise.",
-      messages=[
-        {
-          "role": "user",
-          "content": [
-            {
-              "type": "text",
-              "text": input
-            }
-          ]
-        }
-      ]
-    )
-    output_text = message.content[0].text
-  
-  elif Model_Option == "claude-2.1":  
-    completion = anthropic.completions.create(
-      model=Model_Option,
-      temperature = 0,
-      max_tokens_to_sample=1000,
-      prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
-    )
-    output_text = completion.completion
-  
-  elif Model_Option == "gemini-pro":
-    gemini = genai.GenerativeModel(Model_Option)
-    response = gemini.generate_content(input)
-    output_text = response.text
-    st.write(response.prompt_feedback)  
-
-  elif Model_Option == "gpt-3.5-turbo-0125" or Model_Option == "gpt-4-turbo-preview":
-    response = client.chat.completions.create(
-      model=Model_Option, messages=[
-        {"role": "system", "content": ""},
-        {"role": "user", "content": input},
-      ],
-      temperature=0,
-    )
-    output_text = response.choices[0].message.content
+  with st.spinner("Running AI Model..."):
     
-  end = time.time()
+    start = time.time()
+    
+    input = "Read the text below." + instruction + "\n\n" + raw_text
+    
+    if Model_Option == "claude-3-sonnet-20240229" or "claude-3-opus-20240229":  
+      message = anthropic.messages.create(
+        model = Model_Option,
+        max_tokens = 1000,
+        temperature=0,
+        system= "Be precise and concise.",
+        messages=[
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "text",
+                "text": input
+              }
+            ]
+          }
+        ]
+      )
+      output_text = message.content[0].text
+  
+    elif Model_Option == "claude-2.1":  
+      completion = anthropic.completions.create(
+        model=Model_Option,
+        temperature = 0,
+        max_tokens_to_sample=1000,
+        prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
+      )
+      output_text = completion.completion
+  
+    elif Model_Option == "gemini-pro":
+      gemini = genai.GenerativeModel(Model_Option)
+      response = gemini.generate_content(input)
+      output_text = response.text
+      st.write(response.prompt_feedback)  
+
+    elif Model_Option == "gpt-3.5-turbo-0125" or Model_Option == "gpt-4-turbo-preview":
+      response = client.chat.completions.create(
+        model=Model_Option, messages=[
+          {"role": "system", "content": ""},
+          {"role": "user", "content": input},
+        ],
+        temperature=0,
+      )
+      output_text = response.choices[0].message.content
+    
+    end = time.time()
   
   st.write(output_text)
   st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
