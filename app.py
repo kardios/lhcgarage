@@ -50,7 +50,7 @@ if uploaded_file is not None:
 
 
   if Model_Option == "claude-3-sonnet-20240229" or "claude-3-opus-20240229":  
-    message = client.messages.create(
+    message = anthropic.messages.create(
       model = Model_Option,
       max_tokens = 1000,
       temperature=0,
