@@ -48,7 +48,7 @@ if uploaded_file is not None:
   start = time.time()
   input = "Read the text below." + instruction + "\n\n" + raw_text
   
-  if Model_Option == "claude-2.1":  
+  if Model_Option == "claude-3-sonnet-20240229" or "claude-2.1":  
     completion = anthropic.completions.create(
       model=Model_Option,
       temperature = 0,
