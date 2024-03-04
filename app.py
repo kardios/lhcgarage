@@ -48,7 +48,6 @@ if uploaded_file is not None:
   start = time.time()
   input = "Read the text below." + instruction + "\n\n" + raw_text
 
-
   if Model_Option == "claude-3-sonnet-20240229" or "claude-3-opus-20240229":  
     message = anthropic.messages.create(
       model = Model_Option,
@@ -98,4 +97,4 @@ if uploaded_file is not None:
   
   st.write(output_text)
   st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  st.download_button(':scroll:', output_text)
+  #st.download_button(':scroll:', output_text)
