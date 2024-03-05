@@ -56,7 +56,7 @@ if uploaded_file is not None:
         model = Model_Option,
         max_tokens = 1000,
         temperature=0,
-        system= "Be precise and concise.",
+        system= "",
         messages=[
           {
             "role": "user",
