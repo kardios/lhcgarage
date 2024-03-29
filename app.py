@@ -83,7 +83,7 @@ if uploaded_file is not None:
       gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
       response = gemini.generate_content(input)
       output_text = response.text
-      #st.write(response.prompt_feedback)  
+      st.write(response.prompt_feedback)  
 
     elif Model_Option == "GPT-4 Turbo":
       response = client.chat.completions.create(
