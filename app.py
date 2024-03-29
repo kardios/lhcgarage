@@ -17,7 +17,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 st.write("LHC's Garage :sunglasses: Testing OpenAI, Anthropic and Google's LLMs :sunglasses:")
 
-Model_Option = st.selectbox("**Select** model:", ('gpt-4-turbo-preview','claude-3-opus-20240229','gemini-1.5-pro-latest'))
+Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Shorten into a summary":
@@ -59,9 +59,9 @@ if uploaded_file is not None:
     
     input = "Read the text below." + instruction + "\n\n" + raw_text
     
-    if Model_Option == "claude-3-opus-20240229":  
+    if Model_Option == "claude 3 Opus":  
       message = anthropic.messages.create(
-        model = Model_Option,
+        model = "claude-3-opus-20240229",
         max_tokens = 1000,
         temperature=0,
         system= "",
@@ -79,15 +79,15 @@ if uploaded_file is not None:
       )
       output_text = message.content[0].text
   
-    elif Model_Option == "gemini-1.5-pro-latest":
-      gemini = genai.GenerativeModel(Model_Option)
+    elif Model_Option == "Gemini 1.5 Pro":
+      gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
       response = gemini.generate_content(input)
       output_text = response.text
       #st.write(response.prompt_feedback)  
 
-    elif Model_Option == "gpt-4-turbo-preview":
+    elif Model_Option == "GPT-4 Turbo":
       response = client.chat.completions.create(
-        model=Model_Option, messages=[
+        model="gpt-4-turbo-preview", messages=[
           {"role": "system", "content": ""},
           {"role": "user", "content": input},
         ],
