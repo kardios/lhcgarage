@@ -15,7 +15,7 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 
-st.write("LHC's Garage :sunglasses: Testing Cutting-Edge LLMs :sunglasses: Hougang, Singapore")
+st.write("LHC's Garage :sunglasses: Cutting-Edge LLMs :sunglasses: From Hougang")
 
 Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
