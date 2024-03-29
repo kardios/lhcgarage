@@ -15,7 +15,7 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 
-st.write("LHC's Garage :sunglasses: Testing OpenAI, Anthropic and Google's LLMs :sunglasses:")
+st.write("LHC's Garage :sunglasses: Testing Cutting-Edge LLMs :sunglasses: Hougang, Singapore")
 
 Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
@@ -59,7 +59,7 @@ if uploaded_file is not None:
     
     input = "Read the text below." + instruction + "\n\n" + raw_text
     
-    if Model_Option == "claude 3 Opus":  
+    if Model_Option == "Claude 3 Opus":  
       message = anthropic.messages.create(
         model = "claude-3-opus-20240229",
         max_tokens = 1000,
