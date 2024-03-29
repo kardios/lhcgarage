@@ -15,25 +15,33 @@ anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 client = OpenAI(api_key=CLIENT_API_KEY)
 
-st.write("LHC's Garage :sunglasses: Testing Anthropic, Google and OpenAI's LLMs :sunglasses:")
+st.write("LHC's Garage :sunglasses: Testing OpenAI, Anthropic and Google's LLMs :sunglasses:")
 
-Model_Option = st.selectbox("**Select** model:", ('claude-3-sonnet-20240229','claude-3-opus-20240229','claude-2.1','gemini-pro','gpt-3.5-turbo-0125','gpt-4-turbo-preview'))
+Model_Option = st.selectbox("**Select** model:", ('gpt-4-turbo-preview','claude-3-opus-20240229','gemini-1.5-pro'))
 
-Menu_Option = st.selectbox("**Select** analysis:", ('Summarise the key points of the text', 'Identify possible biases in the text', 'Seek views disagreeing with the text', 'Find angles missing from the text', 'Discuss broader significance of the topics', 'Compare the text with historical events', 'Customise your own unique prompt'))
-if Menu_Option == "Summarise the key points of the text":
-  instruction = "Summarise the key points of the text."
-elif Menu_Option == "Identify possible biases in the text":
-  instruction = "Identify possible biases in the text."
-elif Menu_Option == "Seek views disagreeing with the text":
-  instruction = "Offer perspectives that disagree with the text."
-elif Menu_Option == "Find angles missing from the text":
-  instruction = "Offer perspectives that are missing from the text."
-elif Menu_Option == "Discuss broader significance of the topics":
-  instruction = "Draft a conclusion that highlights the broader significance of the topics."
-elif Menu_Option == "Compare the text with historical events":
-  instruction = "Reflect on the text and draw similiarities and differences to historical events in the last century."
-elif Menu_Option == "Customise your own unique prompt":
-  instruction = st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
+Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
+
+Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
+if Option_Action == "Condense into key points":
+  instruction = "You are my reading assistant. You will read the input I provide. Summarize the input into bullet points. Identify the main ideas and key details, and condense them into concise bullet points. Recognize the overall structure of the text and create bullet points that reflect this structure. The output should be presented in a clear and organized way. Do not start with any titles."
+elif Option_Action == "Shorten into a summary":
+  instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Identify the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
+elif Option_Action == "Identify possible biases":
+  instruction = "You are my reading assistant. You will read the input I provide. Highlight any possible biases in the input in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Identify disagreeing views":
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that disagree with the input in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Identify missing angles":
+  instruction = "You are my reading assistant. You will read the input I provide. Offer perspectives that are missing from the input in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Discuss broader significance":
+  instruction = "You are my reading assistant. You will read the input I provide. Draft a conclusion that highlights the broader significance of the topics in the input. Present the output in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Compare with historical events":
+  instruction = "You are my reading assistant. You will read the input I provide. Reflect on the input and draw similiarities and differences to historical events in the last century. Present the output in a clear and organised way, as one or more paragraphs."
+elif Option_Action == "Black swans and grey rhinos":
+  instruction = "You are my reading assistant. You will read the input I provide. Generate black swan and grey rhino scenarios from the input. The scenarios should sound plausible and coherent, draw inspiration from actual historical events, and highlight the impact. As I am familiar with the definition of black swans and grey rhinos, there is no need to explain what they are and you can jump straight into the list of scenarios. Present your output in bullet points under the headings Black Swans and Grey Rhinos."
+elif Option_Action == "Generate markdown summary":
+  instruction = "You are my reading assistant. You will read the input I provide. Use the input to generate a mindmap in Markdown format. Present your output as follows:\n\n# (Root)\n\n## (Branch 1)\n - (Branchlet 1a)\n - (Branchlet 1b)\n\n## (Branch 2)\n - (Branchlet 2a)\n - (Branchlet 2b)\n\n(and so on...)"
+elif Option_Action == "Customise your own prompt":
+  instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
 uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
 raw_text = ""
@@ -51,7 +59,7 @@ if uploaded_file is not None:
     
     input = "Read the text below." + instruction + "\n\n" + raw_text
     
-    if Model_Option == "claude-3-sonnet-20240229" or "claude-3-opus-20240229":  
+    if Model_Option == "claude-3-opus-20240229":  
       message = anthropic.messages.create(
         model = Model_Option,
         max_tokens = 1000,
@@ -71,22 +79,13 @@ if uploaded_file is not None:
       )
       output_text = message.content[0].text
   
-    elif Model_Option == "claude-2.1":  
-      completion = anthropic.completions.create(
-        model=Model_Option,
-        temperature = 0,
-        max_tokens_to_sample=1000,
-        prompt=f"{HUMAN_PROMPT} {input} {AI_PROMPT}",
-      )
-      output_text = completion.completion
-  
-    elif Model_Option == "gemini-pro":
+    elif Model_Option == "gemini-1.5-pro":
       gemini = genai.GenerativeModel(Model_Option)
       response = gemini.generate_content(input)
       output_text = response.text
       st.write(response.prompt_feedback)  
 
-    elif Model_Option == "gpt-3.5-turbo-0125" or Model_Option == "gpt-4-turbo-preview":
+    elif Model_Option == "gpt-4-turbo-preview":
       response = client.chat.completions.create(
         model=Model_Option, messages=[
           {"role": "system", "content": ""},
