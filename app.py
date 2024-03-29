@@ -7,19 +7,17 @@ from openai import OpenAI
 from pypdf import PdfReader
 
 # Retrieve the API keys from the environment variables
+CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
-CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 
+client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
-client = OpenAI(api_key=CLIENT_API_KEY)
 
 st.write("LHC's Garage :sunglasses: Testing OpenAI, Anthropic and Google's LLMs :sunglasses:")
 
 Model_Option = st.selectbox("**Select** model:", ('gpt-4-turbo-preview','claude-3-opus-20240229','gemini-1.5-pro'))
-
-Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
 
 Option_Action = st.selectbox("What should I do with your input?", ('Condense into key points', 'Shorten into a summary', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Condense into key points":
