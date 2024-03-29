@@ -17,7 +17,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 st.write("LHC's Garage :sunglasses: Testing OpenAI, Anthropic and Google's LLMs :sunglasses:")
 
-Model_Option = st.selectbox("**Select** model:", ('gpt-4-turbo-preview','claude-3-opus-20240229','gemini-1.5-pro'))
+Model_Option = st.selectbox("**Select** model:", ('gpt-4-turbo-preview','claude-3-opus-20240229','gemini-1.5-pro-latest'))
 
 Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Shorten into a summary":
@@ -79,7 +79,7 @@ if uploaded_file is not None:
       )
       output_text = message.content[0].text
   
-    elif Model_Option == "gemini-1.5-pro":
+    elif Model_Option == "gemini-1.5-pro-latest":
       gemini = genai.GenerativeModel(Model_Option)
       response = gemini.generate_content(input)
       output_text = response.text
