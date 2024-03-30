@@ -28,7 +28,7 @@ generation_config = genai.GenerationConfig(
   temperature = 0,
 )
 
-st.write("LHC's Garage :sunglasses: Test Cutting Edge LLMs")
+st.write("LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
 
 Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
