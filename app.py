@@ -3,6 +3,7 @@ import os
 import time
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from openai import OpenAI
 from pypdf import PdfReader
 
