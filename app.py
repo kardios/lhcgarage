@@ -68,60 +68,79 @@ elif Option_Action == "Generate markdown summary":
 elif Option_Action == "Customise your own prompt":
   instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
-raw_text = ""
-output_text = ""
-if uploaded_file is not None:
-  doc_reader = PdfReader(uploaded_file)
-  for i, page in enumerate(doc_reader.pages):
-    text = page.extract_text()
-    if text:
-      raw_text = raw_text + text + "\n"
+#uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
+#raw_text = ""
+#output_text = ""
+#if uploaded_file is not None:
+#  doc_reader = PdfReader(uploaded_file)
+#  for i, page in enumerate(doc_reader.pages):
+#    text = page.extract_text()
+#    if text:
+#      raw_text = raw_text + text + "\n"
 
-  with st.spinner("Running AI Model..."):
-    
-    start = time.time()
-    
-    input = "Read the text below." + instruction + "\n\n" + raw_text
-    
-    if Model_Option == "Claude 3 Opus":  
-      message = anthropic.messages.create(
-        model = "claude-3-opus-20240229",
-        max_tokens = 1000,
-        temperature = 0,
-        system= "",
-        messages=[
-          {
-            "role": "user",
-            "content": [
-              {
-                "type": "text",
-                "text": input
-              }
-            ]
-          }
-        ]
-      )
-      output_text = message.content[0].text
-  
-    elif Model_Option == "Gemini 1.5 Pro":
-      gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
-      response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
-      #st.write(response.prompt_feedback)
-      output_text = response.text
+if Option_Input == "Upload a pdf":
+  uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
+  raw_text = ""
+  if uploaded_file is not None:
+    doc_reader = PdfReader(uploaded_file)
+    for i, page in enumerate(doc_reader.pages):
+      text = page.extract_text()
+      if text:
+        raw_text = raw_text + text + "\n"
+elif Option_Input == "Enter free text":
+  raw_text = ""
+  input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
+  if st.button("Let\'s Go! :rocket:"):
+    raw_text = input_text
 
-    elif Model_Option == "GPT-4 Turbo":
-      response = client.chat.completions.create(
-        model="gpt-4-turbo-preview", messages=[
-          {"role": "system", "content": ""},
-          {"role": "user", "content": input},
-        ],
-        temperature=0,
-      )
-      output_text = response.choices[0].message.content
+if raw_text.strip() != "":
+  try:
+    with st.spinner("Running AI Model..."):
     
-    end = time.time()
+      start = time.time()
+      
+      input = "Read the text below." + instruction + "\n\n" + raw_text
+    
+      if Model_Option == "Claude 3 Opus":  
+        message = anthropic.messages.create(
+          model = "claude-3-opus-20240229",
+          max_tokens = 1000,
+          temperature = 0,
+          system= "",
+          messages=[
+            {  
+              "role": "user",
+              "content": [
+                {
+                  "type": "text",
+                  "text": input
+                }
+              ]
+            }
+          ]
+        )
+        output_text = message.content[0].text
   
-  st.write(output_text)
-  st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
-  #st.download_button(':scroll:', output_text)
+      elif Model_Option == "Gemini 1.5 Pro":
+        gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
+        response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
+        #st.write(response.prompt_feedback)
+        output_text = response.text
+
+      elif Model_Option == "GPT-4 Turbo":
+        response = client.chat.completions.create(
+          model="gpt-4-turbo-preview", messages=[
+            {"role": "system", "content": ""},
+            {"role": "user", "content": input},
+          ],
+          temperature=0,
+        )
+        output_text = response.choices[0].message.content
+    
+      end = time.time()
+  
+    st.write(output_text)
+    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    st.download_button(':scroll:', output_text)
+  except:
+    st.error(" An error occurred during the inference.", icon="🚨")
