@@ -96,6 +96,7 @@ if uploaded_file is not None:
       gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
       response = gemini.generate_content(input, safety_settings = safety_settings, generation_config = generation_config)
       st.write(response.prompt_feedback)
+      st.write(response.parts)
       output_text = response.text
 
     elif Model_Option == "GPT-4 Turbo":
