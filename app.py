@@ -30,7 +30,7 @@ generation_config = genai.GenerationConfig(
 
 st.write("Welcome to LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
 
-Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
+Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Shorten into a summary":
