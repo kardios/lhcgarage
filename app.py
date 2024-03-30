@@ -56,7 +56,7 @@ elif Option_Action == "Generate markdown summary":
 elif Option_Action == "Customise your own prompt":
   instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-uploaded_file = st.file_uploader("**Upload** the PDF document to analyse:", type = "pdf")
+uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
 raw_text = ""
 output_text = ""
 if uploaded_file is not None:
