@@ -143,4 +143,4 @@ if raw_text.strip() != "":
     st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     st.download_button(':scroll:', output_text)
   except:
-    st.error("  An error occurred when trying to analyse the data.", icon="🚨")
+    st.error(" Error occurred during data analysis.", icon="🚨")
