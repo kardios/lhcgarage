@@ -30,6 +30,16 @@ generation_config = genai.GenerationConfig(
 
 st.write("Welcome to LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
 
+with st.expander("Click to read documentation"):
+  st.write("- Productivity app by **Sherwood Analytica**")
+  st.write("- Upload a PDF or enter free text as input")
+  st.write("- Generate a summary or analysis of input") 
+  st.write("- GPT-4 Turbo :robot_face: up to 96,000 words") 
+  st.write("- Claude 3 Opus :robot_face: up to 150,000 words") 
+  st.write("- Gemini 1.5 Pro :robot_face: up to 780,000 words") 
+  st.write("- :red[**Answers may not be suitable or accurate**]")
+  st.write("- :blue[**Try reloading webpage to troubleshoot**]")
+
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
