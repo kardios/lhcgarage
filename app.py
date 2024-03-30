@@ -142,9 +142,14 @@ if raw_text.strip() != "":
         output_text = response.choices[0].message.content
     
       end = time.time()
-  
-    st.write(output_text)
-    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+
+    container = st.container(border=True)
+    container.write(Option_Action)
+    container.write(output_text)
+    container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     st.download_button(':floppy_disk:', output_text)
+    #st.write(output_text)
+    #st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    #st.download_button(':floppy_disk:', output_text)
   except:
     st.error(" Error occurred when running model", icon="🚨")
