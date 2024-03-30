@@ -82,11 +82,14 @@ if Option_Input == "Upload a pdf":
   uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
   raw_text = ""
   if uploaded_file is not None:
-    doc_reader = PdfReader(uploaded_file)
-    for i, page in enumerate(doc_reader.pages):
-      text = page.extract_text()
-      if text:
-        raw_text = raw_text + text + "\n"
+    try:
+      doc_reader = PdfReader(uploaded_file)
+      for i, page in enumerate(doc_reader.pages):
+        text = page.extract_text()
+        if text:
+          raw_text = raw_text + text + "\n"
+    except:
+      st.error(" Error occurred when loading document.", icon="🚨")
 elif Option_Input == "Enter free text":
   raw_text = ""
   input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
