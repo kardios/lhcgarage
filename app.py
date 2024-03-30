@@ -42,6 +42,8 @@ with st.expander("Click to read documentation"):
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
+Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
+
 Option_Action = st.selectbox("What should I do with your input?", ('Shorten into a summary', 'Condense into key points', 'Identify possible biases', 'Identify disagreeing views', 'Identify missing angles', 'Create alternative mental models', 'Discuss broader significance', 'Compare with historical events', 'Black swans and grey rhinos', 'Generate markdown summary', 'Customise your own prompt'))
 if Option_Action == "Shorten into a summary":
   instruction = "You are my reading assistant. You will read the input I provide. Generate a concise and coherent summary. Identify the main ideas and key details. Present your output in a clear and organised way, as one single paragraph only."
