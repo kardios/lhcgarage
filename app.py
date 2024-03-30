@@ -28,7 +28,7 @@ generation_config = genai.GenerationConfig(
   temperature = 0,
 )
 
-st.write("LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
+st.write("Welcome to LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
 
 Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
@@ -75,7 +75,7 @@ if uploaded_file is not None:
     if Model_Option == "Claude 3 Opus":  
       message = anthropic.messages.create(
         model = "claude-3-opus-20240229",
-        max_tokens = 1000,
+        #max_tokens = 1000,
         temperature = 0,
         system= "",
         messages=[
