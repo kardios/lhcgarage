@@ -28,7 +28,7 @@ generation_config = genai.GenerationConfig(
   temperature = 0,
 )
 
-st.write("Welcome to LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
+st.write("LHC's Garage :sunglasses: Testing Cutting Edge LLMs")
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
