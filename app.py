@@ -89,7 +89,7 @@ if Option_Input == "Upload a pdf":
         if text:
           raw_text = raw_text + text + "\n"
     except:
-      st.error(" Error occurred when loading document.", icon="🚨")
+      st.error(" Error occurred when loading document", icon="🚨")
 elif Option_Input == "Enter free text":
   raw_text = ""
   input_text = st.text_area("Enter the text you would like me to summarize or analyse and click **Let\'s Go :rocket:**")
@@ -146,4 +146,4 @@ if raw_text.strip() != "":
     st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     st.download_button(':scroll:', output_text)
   except:
-    st.error(" Error occurred when running the model.", icon="🚨")
+    st.error(" Error occurred when running model", icon="🚨")
