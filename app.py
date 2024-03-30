@@ -16,6 +16,18 @@ client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
 
+safety_settings = {
+  HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+  HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+  HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+  HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+}
+
+generation_config = genai.GenerationConfig(
+  candidate_count = 1,
+  temperature = 0,
+)
+
 st.write("LHC's Garage :sunglasses: Test Cutting Edge LLMs")
 
 Model_Option = st.selectbox("**Select** model:", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
