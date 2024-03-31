@@ -29,15 +29,15 @@ generation_config = genai.GenerationConfig(
 )
 
 st.set_page_config(page_title="LHC's Garage", page_icon=":robot_face:",)
-st.write("Testing Cutting Edge AI Models @ LHC's Garage")
+st.write("Cutting Edge Large Language Models @ LHC's Garage")
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
   st.write("- Upload a PDF or enter free text as input")
   st.write("- Generate a summary or analysis of input") 
-  st.write("- GPT-4 Turbo - up to 96,000 words") 
-  st.write("- Claude 3 Opus - up to 150,000 words") 
-  st.write("- Gemini 1.5 Pro - up to 780,000 words") 
+  st.write("- GPT-4 Turbo - up to 128,000 tokens") 
+  st.write("- Claude 3 Opus - up to 200,000 tokens") 
+  st.write("- Gemini 1.5 Pro - up to 1 million tokens") 
   st.write("- :red[**Answers may not be suitable or accurate**]")
   st.write("- :blue[**Try reloading webpage to troubleshoot**]")
 
