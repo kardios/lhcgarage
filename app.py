@@ -69,26 +69,17 @@ elif Option_Action == "Generate markdown summary":
 elif Option_Action == "Customise your own prompt":
   instruction = "You are my reading assistant. You will read the input I provide." + st.text_input("Customise your own unique prompt:", "What are the follow up actions?")
 
-#uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
-#raw_text = ""
-#output_text = ""
-#if uploaded_file is not None:
-#  doc_reader = PdfReader(uploaded_file)
-#  for i, page in enumerate(doc_reader.pages):
-#    text = page.extract_text()
-#    if text:
-#      raw_text = raw_text + text + "\n"
-
 if Option_Input == "Upload a pdf":
   uploaded_file = st.file_uploader("Upload a PDF to summarise or analyse:", type = "pdf")
   raw_text = ""
   if uploaded_file is not None:
     try:
       doc_reader = PdfReader(uploaded_file)
-      for i, page in enumerate(doc_reader.pages):
-        text = page.extract_text()
-        if text:
-          raw_text = raw_text + text + "\n"
+      with st.spinner("Extracting from PDF document..."):
+        for i, page in enumerate(doc_reader.pages):
+          text = page.extract_text()
+          if text:
+            raw_text = raw_text + text + "\n"
     except:
       st.error(" Error occurred when loading document", icon="🚨")
 elif Option_Input == "Enter free text":
