@@ -1,5 +1,5 @@
-streamlit == 1.22.0
+streamlit >= 1.22.0
 anthropic
 google-generativeai
 openai == 1.00
-pypdf == 4.0
+pypdf >= 4.0
