@@ -51,9 +51,6 @@ groq_output = mistral.chat.completions.create(
 )
 st.write(groq_output.choices[0].message.content)
 
-with st.expander("Click to read documentation"):
-  st.write(doc_text)
-
 prompt_title_list = []
 prompt_text_list = []
 prompt_filename_list = os.listdir("prompts")
