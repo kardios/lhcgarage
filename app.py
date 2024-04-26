@@ -50,7 +50,15 @@ prompt_filename_list = os.listdir("prompts")
 for prompt_filename in prompt_filename_list:
   with open("prompts/" + prompt_filename) as prompt_file:
     prompt_text = prompt_file.read()
-    st.write(prompt_text)
+  groq_output = mistral.chat.completions.create(
+    model="mixtral-8x7b-32768", messages=[
+      {"role": "system", "content": ""},
+      {"role": "user", "content": prompt_text},
+    ],
+    temperature = 0,
+  )
+  prompt_title = groq_output.choices[0].message.content
+  st.write(prompt_title)
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
