@@ -61,8 +61,9 @@ for prompt_filename in prompt_filename_list:
   with open("prompts/" + prompt_filename) as prompt_file:
     prompt_text = prompt_file.read()
   prompt_title = prompt_filename.rstrip(".txt")
-  prompt_title_list = prompt_title_list.append(prompt_title.replace("_"," "))
-  prompt_text_list = prompt_text_list.append(prompt_text)
+  prompt_title = prompt_title.replace("_"," ")
+  prompt_title_list.append(prompt_title)
+  prompt_text_list.append(prompt_text)
 
 st.write(prompt_title_list)
 
