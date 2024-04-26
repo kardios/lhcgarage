@@ -54,12 +54,17 @@ with open("documentation.txt") as doc_file:
 with st.expander("Click to read documentation"):
   st.write(doc_text)
 
+prompt_title_list = []
+prompt_text_list = []
 prompt_filename_list = os.listdir("prompts")
 for prompt_filename in prompt_filename_list:
   with open("prompts/" + prompt_filename) as prompt_file:
     prompt_text = prompt_file.read()
   prompt_title = prompt_filename.rstrip(".txt")
-  st.write(prompt_title)
+  prompt_title_list = prompt_title_list.append(prompt_title.replace("_"," "))
+  prompt_text_list = prompt_text_list.append(prompt_text)
+
+st.write(prompt_title_list)
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
