@@ -48,7 +48,7 @@ with st.expander("Click to read documentation"):
 
 prompt_filename_list = os.listdir("prompts")
 for prompt_filename in prompt_filename_list:
-  with open("prompts\\" + prompt_filename) as prompt_file:
+  with open("prompts/" + prompt_filename) as prompt_file:
     prompt_text = prompt_file.read()
     st.write(prompt_text)
 
