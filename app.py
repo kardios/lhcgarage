@@ -1,20 +1,29 @@
 import streamlit as st
 import os
 import time
+import telebot
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from openai import OpenAI
+#from groq import Groq
 from pypdf import PdfReader
+
+# Set up Telegram Bot
+recipient_user_id = os.environ['RECIPIENT_USER_ID']
+bot_token = os.environ['BOT_TOKEN']
+bot = telebot.TeleBot(bot_token)
 
 # Retrieve the API keys from the environment variables
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
+#MISTRAL_API_KEY = os.environ["GROQ_API_KEY"]
 
 client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
+#mistral = Groq(api_key=MISTRAL_API_KEY)
 
 safety_settings = {
   HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
