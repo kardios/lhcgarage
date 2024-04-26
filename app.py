@@ -18,12 +18,12 @@ bot = telebot.TeleBot(bot_token)
 CLIENT_API_KEY = os.environ['OPENAI_API_KEY']
 CLAUDE_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 GEMINI_API_KEY = os.environ["GOOGLE_API_KEY"]
-#MISTRAL_API_KEY = os.environ["GROQ_API_KEY"]
+MISTRAL_API_KEY = os.environ["GROQ_API_KEY"]
 
 client = OpenAI(api_key=CLIENT_API_KEY)
 anthropic = Anthropic(api_key=CLAUDE_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
-#mistral = Groq(api_key=MISTRAL_API_KEY)
+mistral = Groq(api_key=MISTRAL_API_KEY)
 
 safety_settings = {
   HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
