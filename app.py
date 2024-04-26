@@ -6,7 +6,7 @@ from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from openai import OpenAI
-#from groq import Groq
+from groq import Groq
 from pypdf import PdfReader
 
 # Set up Telegram Bot
