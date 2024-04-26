@@ -62,8 +62,6 @@ for prompt_filename in prompt_filename_list:
   prompt_title_list.append(prompt_title)
   prompt_text_list.append(prompt_text)
 
-st.write(prompt_title_list)
-
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
