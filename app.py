@@ -46,6 +46,8 @@ with open("documentation.txt") as doc_file:
 with st.expander("Click to read documentation"):
   st.write(doc_text)
 
+st.write(os.listdir("prompts"))
+
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
