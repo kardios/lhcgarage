@@ -37,10 +37,8 @@ generation_config = genai.GenerationConfig(
   temperature = 0,
 )
 
-st.set_page_config(page_title="Readhacker", page_icon=":sunglasses:",)
-st.write("**Readhacker**, your AI reading and ideation assistant")
-#st.set_page_config(page_title="LHC's Garage", page_icon=":robot_face:",)
-#st.write("Cutting Edge Large Language Models @ **LHC's Garage**")
+st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
+st.write("**Dempsey Labz**, your AI intern")
 
 with st.expander("Click to read documentation"):
   st.write("- Productivity app by **Sherwood Analytica**")
