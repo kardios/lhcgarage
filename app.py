@@ -52,7 +52,7 @@ for prompt_filename in prompt_filename_list:
     prompt_text = prompt_file.read()
   groq_output = mistral.chat.completions.create(
     model="mixtral-8x7b-32768", messages=[
-      {"role": "system", "content": "Summarize the prompt into a very short phrase of less than ten words."},
+      {"role": "system", "content": "Summarize the prompt in one word."},
       {"role": "user", "content": prompt_text},
     ],
     temperature = 0,
