@@ -40,17 +40,12 @@ generation_config = genai.GenerationConfig(
 st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
 st.write("**Dempsey Labz**, your AI intern")
 
+with open("documentation.txt") as doc_file:
+    doc_text = doc_file.read()
+
 with st.expander("Click to read documentation"):
-  st.write("- Productivity app by **Sherwood Analytica**")
-  st.write("- Upload a PDF or enter free text as input")
-  st.write("- Generate a summary or analysis of input") 
-  st.write("- GPT-4 Turbo - up to 128,000 tokens") 
-  st.write("- Claude 3 Opus - up to 200,000 tokens") 
-  st.write("- Gemini 1.5 Pro - up to 1 million tokens") 
-  st.write("- :red[**Answers may not be suitable or accurate**]")
-  st.write("- :blue[**Try reloading webpage to troubleshoot**]")
+  st.write(doc_text)
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
-
