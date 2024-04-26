@@ -42,10 +42,10 @@ st.write("**Dempsey Labz**, your AI intern")
 
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are a haiku master."},
-    {"role": "user", "content": "Compose a haiku about artificial intelligence."},
+    {"role": "system", "content": "You are a charismatic speaker."},
+    {"role": "user", "content": "Compose an introduction to catch the user's attention."},
   ],
-  temperature = 0.5,
+  temperature = 0.9,
 )
 st.write(groq_output.choices[0].message.content)
 
