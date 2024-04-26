@@ -38,7 +38,6 @@ generation_config = genai.GenerationConfig(
 )
 
 st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
-st.write("**Dempsey Labz**, your AI intern")
 
 with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
