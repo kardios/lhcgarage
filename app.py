@@ -40,9 +40,17 @@ generation_config = genai.GenerationConfig(
 st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
 st.write("**Dempsey Labz**, your AI intern")
 
+groq_output = mistral.chat.completions.create(
+  model="mixtral-8x7b-32768", messages=[
+    {"role": "system", "content": "You are a haiku master."},
+    {"role": "user", "content": "Compose a haiku about artificial intelligence."},
+  ],
+  temperature = 0.5,
+)
+st.write(groq_output.choices[0].message.content)
+
 with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
-
 with st.expander("Click to read documentation"):
   st.write(doc_text)
 
@@ -50,14 +58,7 @@ prompt_filename_list = os.listdir("prompts")
 for prompt_filename in prompt_filename_list:
   with open("prompts/" + prompt_filename) as prompt_file:
     prompt_text = prompt_file.read()
-  groq_output = mistral.chat.completions.create(
-    model="mixtral-8x7b-32768", messages=[
-      {"role": "system", "content": "Generate a very short phrase that describes the prompt's intent."},
-      {"role": "user", "content": prompt_text},
-    ],
-    temperature = 0,
-  )
-  prompt_title = groq_output.choices[0].message.content
+  prompt_title = prompt_filename.rstrip(".txt")
   st.write(prompt_title)
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
