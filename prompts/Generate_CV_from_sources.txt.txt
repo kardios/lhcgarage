@@ -1,4 +1,3 @@
-
 Generate a CV of the person in the input. Use the format below.
 
 [NAME IN CAPITAL LETTERS]
