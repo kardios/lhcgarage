@@ -40,17 +40,18 @@ generation_config = genai.GenerationConfig(
 st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
 st.write("**Dempsey Labz**, your AI intern")
 
+with open("documentation.txt") as doc_file:
+    doc_text = doc_file.read()
+
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are Dempsey Labz, a charismatic intern."},
-    {"role": "user", "content": "Compose a one-paragraph introduction of yourself to catch the user's attention."},
+    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and charismatic introduction in one paragraph."},
+    {"role": "user", "content": doc_text},
   ],
   temperature = 0.9,
 )
 st.write(groq_output.choices[0].message.content)
 
-with open("documentation.txt") as doc_file:
-    doc_text = doc_file.read()
 with st.expander("Click to read documentation"):
   st.write(doc_text)
 
