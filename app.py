@@ -67,6 +67,8 @@ for prompt_filename in prompt_filename_list:
 
 st.write(prompt_title_list)
 
+Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
+
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
