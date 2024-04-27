@@ -98,5 +98,8 @@ if st.button("Let\'s Go! :rocket:"):
     response = gemini.generate_content(prompt, safety_settings = safety_settings, generation_config = generation_config)
     answer = response.text
     end = time.time()
-    st.markdown(answer)
-    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+
+    container = st.container(border=True)
+    container.markdown(answer)
+    container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
+    bot.send_message(chat_id=recipient_user_id, text="Dempsey Labz")
