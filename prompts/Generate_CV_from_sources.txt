@@ -6,7 +6,7 @@ Generate a CV of the person in the SOURCES. Use the format below.
 
 BORN: [Date of Birth]
 
-AGE: [Age as of 22 April 2024]
+AGE: [Age as of today]
 
 MARITAL STATUS: Married to [Spouse's Name], [Number] Children
 
