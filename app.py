@@ -63,6 +63,10 @@ for prompt_filename in prompt_filename_list:
   prompt_text_list.append(prompt_text)
 
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
+index = prompt_title_list.index(Prompt_Option)
+
+Customised_Prompt = st.text_area("You may wish to modify the prompt below.", prompt_text_list[index]))
+
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
 input_text = ""
@@ -86,12 +90,10 @@ if st.button("Let\'s Go! :rocket:"):
 
   if free_text.strip() != "":
     input_text = "\n**[START OF A SOURCE]**\n" + free_text + "\n**[END OF A SOURCE]**\n" + input_text 
-
-  instruction = Prompt_Option
   
   with st.spinner("Running AI Model..."):
     start = time.time()
-    prompt = instruction + "\n\n" + input_text
+    prompt = Customised_Prompt + "\n\n" + input_text
     response = gemini.generate_content(prompt)
     answer = response.text
     st.write(response.prompt_feedback)  
