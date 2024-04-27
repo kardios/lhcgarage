@@ -1,4 +1,4 @@
-Generate a CV of the person in the SOURCES. Use the format below.
+You are an amazing research intern. I would like you to help me with some information synthesis. Generate a CV of the person in the SOURCES. Use the format below.
 
 [NAME IN CAPITAL LETTERS]
 [DESIGNATION IN CAPITAL LETTERS]
