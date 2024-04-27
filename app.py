@@ -49,7 +49,8 @@ groq_output = mistral.chat.completions.create(
   ],
   temperature = 0.9,
 )
-st.write(groq_output.choices[0].message.content)
+intro_container = st.container(border=True)
+intro_container.write(groq_output.choices[0].message.content)
 
 prompt_title_list = []
 prompt_text_list = []
