@@ -93,7 +93,6 @@ if st.button("Let\'s Go! :rocket:"):
   
   with st.spinner("Running AI Model..."):
     start = time.time()
-    today = date.today()
     prompt = prompt + Customised_Prompt + "\n\n" + input_text
     gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
     response = gemini.generate_content(prompt, safety_settings = safety_settings, generation_config = generation_config)
