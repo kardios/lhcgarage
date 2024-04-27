@@ -100,7 +100,7 @@ if st.button("Let\'s Go! :rocket:"):
     end = time.time()
 
     container = st.container(border=True)
-    container.markdown(answer)
+    container.markdown(answer.replace("\n","  \n")
     container.write("Time to generate: " + str(round(end-start,2)) + " seconds")
     bot.send_message(chat_id=recipient_user_id, text="Dempsey Labz")
-    st.download_button(':floppy_disk:', output_text)
+    st.download_button(':floppy_disk:', answer)
