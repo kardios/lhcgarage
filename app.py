@@ -94,7 +94,8 @@ if st.button("Let\'s Go! :rocket:"):
   
   with st.spinner("Running AI Model..."):
     start = time.time()
-    prompt = "You are the most amazing intern in the world. Today is " + date.today() + ".\n\n"
+    today = date.today()
+    prompt = "You are the most amazing intern in the world. Today is " + today + ".\n\n"
     st.write(prompt)
     prompt = prompt + Customised_Prompt + "\n\n" + input_text
     gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
