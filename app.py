@@ -65,7 +65,7 @@ for prompt_filename in prompt_filename_list:
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
 
-Customised_Prompt = st.text_area("You may wish to modify the prompt below.", prompt_text_list[index]))
+Customised_Prompt = st.text_area("You may wish to modify the prompt below.", prompt_text_list[index])
 
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
