@@ -98,5 +98,5 @@ if st.button("Let\'s Go! :rocket:"):
     response = gemini.generate_content(prompt, safety_settings = safety_settings, generation_config = generation_config)
     answer = response.text
     end = time.time()
-    st.write(answer)
+    st.markdown(answer)
     st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
