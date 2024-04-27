@@ -1,4 +1,4 @@
-Generate a CV of the person in the input. Use the format below.
+Generate a CV of the person in the SOURCES. Use the format below.
 
 [NAME IN CAPITAL LETTERS]
 [DESIGNATION IN CAPITAL LETTERS]
