@@ -86,7 +86,9 @@ if st.button("Let\'s Go! :rocket:"):
 
   if free_text.strip() != "":
     input_text = "\n**[START OF A SOURCE]**\n" + free_text + "\n**[END OF A SOURCE]**\n" + input_text 
- 
+
+  instruction = Prompt_Option
+  
   with st.spinner("Running AI Model..."):
     start = time.time()
     prompt = instruction + "\n\n" + input_text
