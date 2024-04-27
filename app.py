@@ -98,7 +98,7 @@ if st.button("Let\'s Go! :rocket:"):
     start = time.time()
     prompt = Customised_Prompt + "\n\n" + input_text
     gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
-    response = gemini.generate_content(prompt, safety_settings = safety_settings, generation_config = generation_config)
+    response = gemini.generate_content(prompt, request_options={"timeout": 600}, safety_settings = safety_settings, generation_config = generation_config)
     answer = response.text
     end = time.time()
 
