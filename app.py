@@ -63,7 +63,36 @@ for prompt_filename in prompt_filename_list:
   prompt_text_list.append(prompt_text)
 
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
-
 Model_Option = st.selectbox("What Large Language Model do I use?", ('GPT-4 Turbo','Claude 3 Opus','Gemini 1.5 Pro'))
 
-Option_Input = st.selectbox("How will I receive your input?", ('Upload a pdf','Enter free text'))
+input_text = ""
+free_text = st.text_area("Enter your free text data source and click **Let\'s Go :rocket:**")
+uploaded_files = st.file_uploader("Upload your PDF data sources and click **Let\'s Go :rocket:**", 
+                                  type = "pdf", accept_multiple_files = True)
+
+for uploaded_file in uploaded_files:
+  raw_text = ""
+  if uploaded_file is not None:
+    raw_text = raw_text + "\n**[START OF A SOURCE]**\n"
+    doc_reader = PdfReader(uploaded_file)
+    for i, page in enumerate(doc_reader.pages):
+      text = page.extract_text()
+      if text:
+        raw_text = raw_text + text + "\n"
+    raw_text = raw_text + "\n**[END OF A SOURCE]**\n"
+  input_text = input_text + raw_text
+
+if st.button("Let\'s Go! :rocket:"):
+
+  if free_text.strip() != "":
+    input_text = "\n**[START OF A SOURCE]**\n" + free_text + "\n**[END OF A SOURCE]**\n" + input_text 
+ 
+  with st.spinner("Running AI Model..."):
+    start = time.time()
+    prompt = instruction + "\n\n" + input_text
+    response = gemini.generate_content(prompt)
+    answer = response.text
+    st.write(response.prompt_feedback)  
+    end = time.time()
+    st.write(answer)
+    st.write("Time to generate: " + str(round(end-start,2)) + " seconds")
