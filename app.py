@@ -44,7 +44,7 @@ with open("documentation.txt") as doc_file:
 
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and charismatic introduction in one paragraph."},
+    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph."},
     {"role": "user", "content": doc_text},
   ],
   temperature = 0.9,
