@@ -8,6 +8,11 @@ from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from openai import OpenAI
 from groq import Groq
 from pypdf import PdfReader
+from datetime import date
+
+today = date.today()
+formatted_date = today.strftime('%B %d, %Y')
+st.write("Today is", formatted_date)
 
 # Set up Telegram Bot
 recipient_user_id = os.environ['RECIPIENT_USER_ID']
