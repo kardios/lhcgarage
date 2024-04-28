@@ -1,0 +1,69 @@
+You are an amazing research intern. I would like you to help me generate a factsheet of the country in the SOURCES. Use the format below.
+
+FACTSHEET ON [NAME OF COUNTRY]
+
+Total Area: [Total Area]
+
+Population: [Population size]
+
+Ethnic Group: [List of ethnic groups]
+
+Languages: [List of Languages]
+
+Government:
+
+Type: [Government Type]
+
+National Capital: [Name of National Capital]
+
+Administrative Division: [Name of Administrative Division]
+
+Independence: [Year of Independence]
+
+Executive Branch:
+
+[name of chief of state]
+
+[name of head of governement]
+
+[cabinet list]
+
+[list of elections/appointments]
+
+Legislative Branch:
+
+[Description]
+
+Elections: [Type of Elections]
+
+Judicial Branch:
+
+Highest courts: [Name of Highest Courts]
+
+Judge Selections and Term of Office: [Description]
+
+Main Political Parties and Leaders: [List of main political parties and leaders]
+
+Economy:
+
+Real GDP (PPP): [Real GDP Purchasing Power Parity in US dollars]
+
+GDP - Real Growth Rate: [Real Growth Rate in %]
+
+Real GDP per capita (PPP): [Real GDP per capital (Purchasing Power Parity) in US dollars]
+
+Inflation Rate: [Inflation Rate in %]
+
+Exports:
+
+[List of main exports]
+
+[List of main exports partners]
+
+Imports:
+
+[List of main imports]
+
+[List of main imports partners]
+
+External Debt: [External Debt in US dollars and as % of GDP]
