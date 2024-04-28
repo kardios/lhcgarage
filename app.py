@@ -44,7 +44,7 @@ with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
 
 today = date.today()
-sentence_with_date = "Today is " + today.strftime('%B %d, %Y') + "."
+sentence_with_date = "Today is " + today.strftime('%B %d, %Y') + ". "
 
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
