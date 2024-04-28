@@ -48,7 +48,7 @@ sentence_with_date = "Mention today's date " + today.strftime('%B %d, %Y')
 
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph." + sentence_date},
+    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph." + sentence_with_date},
     {"role": "user", "content": doc_text},
   ],
   temperature = 0.9,
