@@ -40,16 +40,15 @@ generation_config = genai.GenerationConfig(
 
 st.set_page_config(page_title="Sherwood Labz", page_icon=":sunglasses:",)
 
-today = date.today()
-formatted_date = today.strftime('%B %d, %Y')
-st.write("Today is", formatted_date)
-
 with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
 
+today = date.today()
+sentence_with_date = "Mention today's date " + today.strftime('%B %d, %Y')
+
 groq_output = mistral.chat.completions.create(
   model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph."},
+    {"role": "system", "content": "You are Dempsey Labz, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph." + sentence_date},
     {"role": "user", "content": doc_text},
   ],
   temperature = 0.9,
