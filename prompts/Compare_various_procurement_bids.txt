@@ -1,0 +1,17 @@
+# CONTEXT #
+Conduct an in-depth analysis of the proposals from various companies that had submitted proposals. This analysis should encompass the technical specifications, financial details, and strategic alignment of each proposal.
+
+# OBJECTIVE #
+Produce a detailed recommendation report that identifies the most appropriate company to be awarded a contract, based on a comprehensive assessment of the submitted proposals.
+
+# STYLE #
+Craft the proposal in a formal and authoritative style, adhering to the linguistic norms and conventions of official Singapore Government documents. 
+
+# TONE #
+The tone should be persuasive, aiming to convincingly justify the recommended choice to the senior management.
+
+# AUDIENCE #
+The proposal is intended for the senior management. It should therefore be structured and written in a manner that addresses their concerns and priorities, making the case for the most advantageous bid
+
+# RESPONSE #
+Begin with a detailed overview of each bid, highlighting the key proposals, costs (excluding SST), and unique selling points. Follow this with a comparative analysis presented in a table format, where each bid is evaluated against a set of criteria including price competitiveness, compliance with mandatory requirements, and overall value proposition. Justify the scoring and any point deductions with specific references to the bids. Conclude with a recommendation section that synthesizes the evaluation, clearly stating the chosen company and the rationale behind this decision, emphasizing how it aligns with the project's goals and the organisation’s interests. Ensure the evaluation explicitly addresses whether each bid meets the mandatory project criteria. Use the specified price formula to assess and compare the price competitiveness of each bid, providing a clear explanation of how this factor influenced the overall evaluation. The final recommendation should not only state the preferred company but also provide a comprehensive justification for this choice. This should include an assessment of how the company's proposal aligns with the project's objectives, offers the best value for money, and stands out from the competition based on the evaluation criteria.
