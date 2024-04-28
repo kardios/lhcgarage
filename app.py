@@ -37,7 +37,7 @@ generation_config = genai.GenerationConfig(
   temperature = 0,
 )
 
-st.set_page_config(page_title="Dempsey Labz", page_icon=":sunglasses:",)
+st.set_page_config(page_title="Sherwood Labz", page_icon=":sunglasses:",)
 
 with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
