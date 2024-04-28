@@ -10,10 +10,6 @@ from groq import Groq
 from pypdf import PdfReader
 from datetime import date
 
-today = date.today()
-formatted_date = today.strftime('%B %d, %Y')
-st.write("Today is", formatted_date)
-
 # Set up Telegram Bot
 recipient_user_id = os.environ['RECIPIENT_USER_ID']
 bot_token = os.environ['BOT_TOKEN']
@@ -43,6 +39,10 @@ generation_config = genai.GenerationConfig(
 )
 
 st.set_page_config(page_title="Sherwood Labz", page_icon=":sunglasses:",)
+
+today = date.today()
+formatted_date = today.strftime('%B %d, %Y')
+st.write("Today is", formatted_date)
 
 with open("documentation.txt") as doc_file:
     doc_text = doc_file.read()
