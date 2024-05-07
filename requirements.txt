@@ -1,7 +1,7 @@
 streamlit >= 1.22.0
-anthropic
+#anthropic
 google-generativeai
-openai >= 1.00
+#openai >= 1.00
 pypdf >= 4.0
 pyTelegramBotAPI
-groq
+#groq
