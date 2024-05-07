@@ -70,6 +70,8 @@ for prompt_filename in prompt_filename_list:
 prompt_title_list.append("Customise your own prompt")
 prompt_text_list.append("You are an amazing intern. I would like you to read the sources I provide. Generate a timeline of events.")
 
+Model_Option = st.selectbox("What Large Language Model do I use?", ('Gemini 1.5 Pro','Claude 3 Opus','GPT-4 Turbo'))
+
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
 
