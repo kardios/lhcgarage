@@ -104,9 +104,37 @@ if st.button("Let\'s Go! :rocket:"):
   with st.spinner("Running AI Model..."):
     start = time.time()
     prompt = sentence_with_date + Customised_Prompt + "\n\n" + input_text
-    gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
-    response = gemini.generate_content(prompt, request_options={"timeout": 600}, safety_settings = safety_settings, generation_config = generation_config)
-    answer = response.text
+
+    if Model_Option == "Claude 3 Opus":  
+      message = anthropic.messages.create(
+        model = "claude-3-opus-20240229",
+        max_tokens = 1000,
+        temperature = 0,
+        system= "",
+        messages=[
+          { 
+            "role": "user",
+            "content": [{"type": "text","text": prompt}]
+          }
+        ]
+      )
+      answer = message.content[0].text
+  
+    elif Model_Option == "Gemini 1.5 Pro":
+      gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
+      response = gemini.generate_content(prompt, request_options={"timeout": 600}, safety_settings = safety_settings, generation_config = generation_config)
+      answer = response.text
+    
+    elif Model_Option == "GPT-4 Turbo":
+      response = client.chat.completions.create(
+        model="gpt-4-turbo", messages=[
+          {"role": "system", "content": ""},
+            {"role": "user", "content": input},
+        ],
+        temperature=0,
+      )
+      answer = response.choices[0].message.content
+    
     end = time.time()
 
     container = st.container(border=True)
