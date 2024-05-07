@@ -129,7 +129,7 @@ if st.button("Let\'s Go! :rocket:"):
       response = client.chat.completions.create(
         model="gpt-4-turbo", messages=[
           {"role": "system", "content": ""},
-            {"role": "user", "content": input},
+          {"role": "user", "content": input},
         ],
         temperature=0,
       )
