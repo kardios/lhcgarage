@@ -46,15 +46,16 @@ with open("documentation.txt") as doc_file:
 today = date.today()
 sentence_with_date = "Today is " + today.strftime('%B %d, %Y') + ". "
 
-groq_output = mistral.chat.completions.create(
-  model="mixtral-8x7b-32768", messages=[
-    {"role": "system", "content": "You are Sherwood Lab, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph."},
-    {"role": "user", "content": doc_text},
-  ],
-  temperature = 0.9,
-)
+#groq_output = mistral.chat.completions.create(
+#  model="mixtral-8x7b-32768", messages=[
+#    {"role": "system", "content": "You are Sherwood Lab, an intern. Compose a catchy and impactful introduction in one concise and coherent paragraph."},
+#    {"role": "user", "content": doc_text},
+#  ],
+#  temperature = 0.9,
+#)
 intro_container = st.container(border=True)
-intro_container.write(groq_output.choices[0].message.content)
+#intro_container.write(groq_output.choices[0].message.content)
+intro_container.write(doc_text)
 
 prompt_title_list = []
 prompt_text_list = []
