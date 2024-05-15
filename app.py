@@ -72,6 +72,11 @@ prompt_text_list.append("You are an amazing intern. I would like you to read the
 
 #Model_Option = st.selectbox("What Large Language Model do I use?", ('Gemini 1.5 Pro','Claude 3 Opus','GPT-4 Turbo'))
 
+if st.toggle("Try Gemini Flash"):
+  model_name = "gemini-1.5-flash-latest"
+else:
+  model_name = "gemini-1.5-pro-latest"
+
 Prompt_Option = st.selectbox("Which Prompt do I use?", prompt_title_list)
 index = prompt_title_list.index(Prompt_Option)
 
@@ -104,7 +109,7 @@ if st.button("Let\'s Go! :rocket:"):
   with st.spinner("Running AI Model..."):
     start = time.time()
     prompt = sentence_with_date + Customised_Prompt + "\n\n" + input_text
-    gemini = genai.GenerativeModel("gemini-1.5-pro-latest")
+    gemini = genai.GenerativeModel(model_name)
     response = gemini.generate_content(prompt, request_options={"timeout": 600}, safety_settings = safety_settings, generation_config = generation_config)
     answer = response.text
     end = time.time()
